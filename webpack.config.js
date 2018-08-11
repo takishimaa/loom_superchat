@@ -49,7 +49,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      Components: path.resolve(__dirname, 'src/components'),
+      Components: path.resolve(__dirname, 'src/scripts/components'),
+      Styles: path.resolve(__dirname, 'src/scripts/components/styles'),      
+      Store: path.resolve(__dirname, 'src/scripts/store'),
+      Modules: path.resolve(__dirname, 'src/scripts/modules'),      
     }
   },
   plugins: [
@@ -60,7 +63,8 @@ module.exports = {
       'Fragment': ['react', 'Fragment'],
       'ReactDOM': 'react-dom',
       'PropTypes': 'prop-types',
-      'styled': ['styled-components', 'default']
+      'styled': ['styled-components', 'default'],
+      'Colors': [path.join(__dirname, 'src/scripts/components/styles/colors'), 'default'],
     }),
     new CopyWebpackPlugin(
       [
