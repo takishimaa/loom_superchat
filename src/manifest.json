@@ -1,9 +1,22 @@
 {
   "manifest_version": 2,
-  "name": "name",
+  "name": "nagesen",
   "version": "0.0.1",
   "description": "",
-  "author": "mgi166",
+  "author": "cryptocrystal",
+  "browser_action": {
+    "name": "投げ銭",
+    "default_icon": {
+      "19": "images/icon19.png",
+      "38": "images/icon38.png"
+    },
+    "default_popup": "index.html"
+  },
+  "icons": { 
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+   "128": "images/icon128.png" 
+  },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
