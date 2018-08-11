@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "name",
+  "version": "0.0.1",
+  "description": "",
+  "author": "mgi166",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/contentScripts.bundle.js"]
+    }
+  ]
+}
