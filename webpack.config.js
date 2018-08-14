@@ -6,13 +6,13 @@ const WriteFilePlugin   = require('write-file-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV;
 const devBuild = nodeEnv !== 'production';
-require('babel-polyfill');
 
 module.exports = {
   mode: nodeEnv,
-  entry: {
-    contentScripts: path.join(__dirname, 'src/scripts/contentScripts.js'),
-  },
+  entry: [
+    'babel-polyfill',
+    path.join(__dirname, 'src/scripts/contentScripts.js')
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'scripts/[name].bundle.js',
@@ -51,8 +51,13 @@ module.exports = {
     alias: {
       Components: path.resolve(__dirname, 'src/scripts/components'),
       Styles: path.resolve(__dirname, 'src/scripts/components/styles'),      
+      Containers: path.resolve(__dirname, 'src/scripts/containers'),
       Store: path.resolve(__dirname, 'src/scripts/store'),
-      Modules: path.resolve(__dirname, 'src/scripts/modules'),      
+      Sagas: path.resolve(__dirname, 'src/scripts/sagas'),
+      Modules: path.resolve(__dirname, 'src/scripts/modules'),
+      Api: path.resolve(__dirname, 'src/scripts/api'),
+      Images: path.resolve(__dirname, 'src/images'),
+      Contracts: path.resolve(__dirname, 'src/contracts')
     }
   },
   plugins: [
@@ -75,6 +80,10 @@ module.exports = {
         {
           from: path.join(__dirname, 'src', 'images'),
           to: path.join(__dirname, 'dist', 'images'),
+        },
+        {
+          from: path.join(__dirname, 'src', 'contracts'),
+          to: path.join(__dirname, 'dist', ''),
         },
       ]
     ),

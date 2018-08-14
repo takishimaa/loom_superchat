@@ -1,8 +1,8 @@
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { reducer as form } from 'redux-form'
-// import rootSaga from 'Sagas'
-import appReducer from 'Modules/app'
+import rootSaga from 'Sagas'
+import popupReducer from 'Modules/popup'
 
 const configureStore = (initialState = {}) => {
   const sagaMiddleware = createSagaMiddleware()
@@ -20,11 +20,20 @@ const configureStore = (initialState = {}) => {
     ...enhancers
   )(createStore)
   const reducers = combineReducers({
-    form,
-    app: appReducer
+    form: form.plugin({
+      MessageInput: (state, action) => {
+        switch(action.type) {
+          case 'SEND_TEXT_MESSAGE':
+            return undefined; 
+          default:
+            return state;
+        }
+      }
+    }),
+    popup: popupReducer
   })
   const store = createStoreWithMiddleware(reducers, initialState)
-  // sagaMiddleware.run(rootSaga)
+  sagaMiddleware.run(rootSaga)
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

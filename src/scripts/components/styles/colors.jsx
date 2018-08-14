@@ -18,8 +18,10 @@ const COLORS = {
   SNS_TWITTER: '#1DA1F2',
 
   MAIN10: '#F9F9F9',
+  MAIN20: '#ECF0F9',
   MAIN50: '#B8C9F1',
   MAIN80: '#99ABD5',
+  MAIN100: '#424360'
 }
 
 export default COLORS

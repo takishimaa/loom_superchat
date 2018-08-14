@@ -1,14 +1,19 @@
 import { Provider } from 'react-redux'
 import { render } from 'react-dom'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
 import configureStore from 'Store'
-import Popup from 'Components/Popup'
+import PopupContainer from 'Containers/PopupContainer'
 import 'Styles/reset'
+import 'babel-polyfill'
+
+TimeAgo.locale(en)
 
 const initialState = {}
 const store = configureStore(initialState)
 render(
   <Provider store={store}>
-    <Popup />
+    <PopupContainer />
   </Provider>,
   document.getElementById('app')
 )
